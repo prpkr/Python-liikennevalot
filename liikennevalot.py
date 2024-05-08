@@ -1,12 +1,13 @@
-import RPi.GPIO as GPIO
+#import RPi.GPIO as GPIO
 from time import sleep
-
+'''
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(8, GPIO.OUT, initial=GPIO.LOW)
 GPIO.setup(10, GPIO.OUT, initial=GPIO.LOW)
 GPIO.setup(12, GPIO.OUT, initial=GPIO.LOW)
 GPIO.setup(16, GPIO.IN)
+'''
 
 def sensor():
     print("Waiting for movement")
@@ -48,4 +49,7 @@ def yellowlight():
 
 for i in range(3):
     yellowlight()
+
+while True:
     redlight()
+    greenlight()
