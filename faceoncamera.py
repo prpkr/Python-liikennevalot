@@ -9,10 +9,14 @@ import face_recognition
 load_dotenv()
 
 def setup_camera():
-    """Set up the camera and take a picture, saving it to the specified path."""
-    image_path = os.getenv('IMAGE_PATH')
-    os.makedirs(os.path.dirname(image_path), exist_ok=True)
+    """Setup the camera with the desired settings."""
     camera = PiCamera()
+    camera.resolution = (640, 480)  # Set the resolution to 640x480
+    return camera
+
+def capture_image(camera, image_path):
+    """Take a picture with the provided camera and save it to the specified path."""
+    os.makedirs(os.path.dirname(image_path), exist_ok=True)
     try:
         camera.start_preview()
         sleep(2)  # Camera warm-up time
@@ -36,9 +40,11 @@ def detect_faces(image_path):
         print("Ei löytynyt kasvoja.")
 
 def main():
-    image_path = setup_camera()
-    display_image(image_path)
-    detect_faces(image_path)
+    image_path = os.getenv('IMAGE_PATH')
+    camera = setup_camera()
+    while True:
+        capture_image(camera, image_path)
+        detect_faces(image_path)
 
 if __name__ == "__main__":
     main()
