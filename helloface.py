@@ -1,7 +1,15 @@
 import face_recognition
+import os
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
+
+# Retrieve the image path from environment variable
+image_path = os.getenv('IMAGE_PATH')
 
 # Lataa kuva
-image = face_recognition.load_image_file("your_image.jpg")
+image = face_recognition.load_image_file(image_path)
 
 # Etsi kasvot kuvasta
 face_locations = face_recognition.face_locations(image)

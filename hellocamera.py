@@ -19,7 +19,7 @@ camera = PiCamera()
 try:
     # Start the camera preview
     camera.start_preview()
-    sleep(5)  # Camera warm-up time
+    sleep(2)  # Camera warm-up time
     camera.capture(image_path)
 finally:
     # Stop the preview regardless of any errors during capture
