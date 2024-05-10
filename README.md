@@ -14,4 +14,4 @@ Siirto punaisesta vihreään tapahtuu kameran tunnistaessa “jotain”. Nyt sil
 
 Datasetti ja malli:
 Coco dataset
-yolo v5
+SSD mobilenet v1
